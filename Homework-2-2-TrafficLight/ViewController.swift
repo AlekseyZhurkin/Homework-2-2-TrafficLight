@@ -9,11 +9,8 @@ import UIKit
 
 final class ViewController: UIViewController {
     // MARK: - IB Outlets
-    
     @IBOutlet weak var redView: UIView!
-    
     @IBOutlet weak var yellowView: UIView!
-    
     @IBOutlet weak var greenView: UIView!
     
     @IBOutlet weak var buttonLabel: UIButton!
@@ -24,17 +21,19 @@ final class ViewController: UIViewController {
         redView.alpha = 0.3
         yellowView.alpha = 0.3
         greenView.alpha = 0.3
-        
-        redView.layer.cornerRadius = redView.frame.width / 2
-        yellowView.layer.cornerRadius = yellowView.frame.width / 2
-        greenView.layer.cornerRadius = greenView.frame.width / 2
-        
+                
         buttonLabel.setTitle("Start".uppercased(), for: .normal)
         buttonLabel.layer.cornerRadius = 8
     }
     
+    override func viewWillLayoutSubviews() {
+        redView.layer.cornerRadius = redView.frame.width / 2
+        yellowView.layer.cornerRadius = yellowView.frame.width / 2
+        greenView.layer.cornerRadius = greenView.frame.width / 2
+    }
+    
     // MARK: - IB Actions
-    @IBAction func buttonDidTapped(_ sender: UIButton) {
+    @IBAction func buttonDidTapped() {
         buttonLabel.setTitle("Next".uppercased(), for: .normal)
         
         if redView.alpha == 1 {
